@@ -1,4 +1,4 @@
-local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
+local ret_status="%(?:%{$fg_bold[blue]%}//:%{$fg_bold[red]%}//)"
 PROMPT='${ret_status} %F{magenta}${SSH_TTY:+%n@%m }%F{white}%1~%f${vcs_info}\
 %(!.%B%F{red}#%f%b.%B %(?.%F{blue}.%F{red})❯%f%b) '
   RPROMPT=''
