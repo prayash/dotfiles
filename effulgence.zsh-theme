@@ -1,5 +1,5 @@
 local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
-PROMPT='${ret_status} %F{magenta}${SSH_TTY:+%n@%m }%F{cyan}%1~%f${vcs_info}\
+PROMPT='${ret_status} %F{magenta}${SSH_TTY:+%n@%m }%F{white}%1~%f${vcs_info}\
 %(!.%B%F{red}#%f%b.%B %(?.%F{blue}.%F{red})❯%f%b) '
   RPROMPT=''
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
