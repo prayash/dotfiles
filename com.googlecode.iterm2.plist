@@ -1187,7 +1187,7 @@
 		</dict>
 	</dict>
 	<key>HideScrollbar</key>
-	<true/>
+	<false/>
 	<key>HotKeyBookmark</key>
 	<string>1ED49FC0-6AD9-444B-A13C-D3D4ED035881</string>
 	<key>HotKeyTogglesWindow</key>
@@ -1245,9 +1245,9 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>330 289 620 392 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>399 245 796 473 0 0 1280 777 </string>
+	<string>242 155 796 473 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 359 1280 418 0 0 1280 777 </string>
+	<string>131 73 810 441 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>152 50 650 594 0 0 1280 777 </string>
 	<key>NeverWarnAboutShortLivedSessions_91D3B55E-73B2-4829-B2F4-EDC7DB2A5A6F</key>
@@ -1489,7 +1489,7 @@
 			<key>Close Sessions On End</key>
 			<true/>
 			<key>Columns</key>
-			<integer>80</integer>
+			<integer>100</integer>
 			<key>Command</key>
 			<string></string>
 			<key>Cursor Boost</key>
@@ -2147,7 +2147,7 @@
 			<key>Close Sessions On End</key>
 			<true/>
 			<key>Columns</key>
-			<integer>80</integer>
+			<integer>100</integer>
 			<key>Command</key>
 			<string></string>
 			<key>Cursor Color</key>
@@ -2657,7 +2657,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-02-15T22:34:16Z</date>
+	<date>2017-02-23T00:37:59Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>

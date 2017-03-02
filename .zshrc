@@ -103,7 +103,7 @@ alias ni='npm install'
 alias ns='npm start'
 alias nrd='npm run dev'
 alias nrb='npm run build'
-alias pg='cd ~/Downloads/_playground'
+alias dojo='cd ~/dev/_dojo'
 
 bindkey "^[^[[C" forward-word
 bindkey "^[^[[D" backward-word
