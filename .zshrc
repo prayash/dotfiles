@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/effulgence/.oh-my-zsh
+source $ZSH/oh-my-zsh.sh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -65,12 +66,19 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 plugins=(git zsh-syntax-highlighting)
 
 # User configuration
-
 export PATH="/Users/effulgence/.rbenv/shims:/Users/effulgence/.rvm/gems/ruby-2.2.1/bin:/Users/effulgence/.rvm/gems/ruby-2.2.1@global/bin:/Users/effulgence/.rvm/rubies/ruby-2.2.1/bin:/Users/effulgence/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/effulgence/.rvm/bin"
+
+# Added by Anaconda3 4.1.1 installer
+export PATH="/Users/effulgence/anaconda/bin:$PATH"
+
+# Node packages
 export PATH="$HOME/.npm-packages/bin:$PATH"
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
-source $ZSH/oh-my-zsh.sh
+# Spark
+export SPARK_HOME=/Users/effulgence/spark
+export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -108,5 +116,3 @@ alias dojo='cd ~/dev/_dojo'
 bindkey "^[^[[C" forward-word
 bindkey "^[^[[D" backward-word
 
-# Added by Anaconda3 4.1.1 installer
-export PATH="/Users/effulgence/anaconda/bin:$PATH"
