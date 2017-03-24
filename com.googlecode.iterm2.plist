@@ -1247,9 +1247,9 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>330 289 620 392 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>242 155 796 473 0 0 1280 777 </string>
+	<string>276 315 918 381 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 337 1280 440 0 0 1280 777 </string>
+	<string>0 359 1280 418 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>152 50 650 594 0 0 1280 777 </string>
 	<key>NeverWarnAboutShortLivedSessions_91D3B55E-73B2-4829-B2F4-EDC7DB2A5A6F</key>
@@ -1388,12 +1388,16 @@
 			</dict>
 			<key>Ansi 5 Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.73333334922790527</real>
+				<real>0.38603794574737549</real>
+				<key>Color Space</key>
+				<string>Calibrated</string>
 				<key>Green Component</key>
-				<real>0.0</real>
+				<real>0.04647354781627655</real>
 				<key>Red Component</key>
-				<real>0.73333334922790527</real>
+				<real>0.93631696701049805</real>
 			</dict>
 			<key>Ansi 6 Color</key>
 			<dict>
@@ -2050,21 +2054,29 @@
 			</dict>
 			<key>Ansi 5 Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.73333334922790527</real>
+				<real>0.38438758254051208</real>
+				<key>Color Space</key>
+				<string>Calibrated</string>
 				<key>Green Component</key>
-				<real>0.0</real>
+				<real>0.049305267632007599</real>
 				<key>Red Component</key>
-				<real>0.73333334922790527</real>
+				<real>0.93760097026824951</real>
 			</dict>
 			<key>Ansi 6 Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.73333334922790527</real>
+				<real>0.76891064643859863</real>
+				<key>Color Space</key>
+				<string>Calibrated</string>
 				<key>Green Component</key>
-				<real>0.73333334922790527</real>
+				<real>0.771201491355896</real>
 				<key>Red Component</key>
-				<real>0.0</real>
+				<real>0.35269838571548462</real>
 			</dict>
 			<key>Ansi 7 Color</key>
 			<dict>
@@ -2659,7 +2671,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-03-21T21:53:57Z</date>
+	<date>2017-03-23T17:01:07Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
