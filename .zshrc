@@ -1,3 +1,6 @@
+# -----------------------------------------------------------
+## Init
+
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/effulgence/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -8,7 +11,60 @@ source $ZSH/oh-my-zsh.sh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="effulgence"
 
-# Colors -----------------------------------------------------------
+# -----------------------------------------------------------
+## Paths
+
+# Default
+export PATH="$HOME/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
+
+# Ruby
+export PATH="$PATH:$HOME/.rbenv/shims:$HOME/.rvm/gems/ruby-2.2.1@global/bin:$HOME/.rvm/bin"
+
+# Node
+export PATH="$PATH:$HOME/.npm-packages/bin"
+
+# Anaconda
+export PATH="$HOME/anaconda/bin:$PATH"
+
+# Spark
+export SPARK_HOME=/Users/effulgence/spark
+# export PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
+# export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:$PYTHONPATH
+
+# export ANACONDA_ROOT="~/anaconda"
+# export PYSPARK_DRIVER_PYTHON=$ANACONDA_ROOT/bin/ipython
+# export PYSPARK_PYTHON=$ANACONDA_ROOT/bin/python
+
+# -----------------------------------------------------------
+## Aliases
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
+alias server='http-server -o --cors'
+alias ni='npm install'
+alias ns='npm start'
+alias nrd='npm run dev'
+alias nrb='npm run build'
+alias dojo='cd ~/dev/_dojo'
+alias pyspark='~/spark/bin/spark-submit'
+
+# -----------------------------------------------------------
+## Key Bindings
+
+bindkey "^[^[[C" forward-word
+bindkey "^[^[[D" backward-word
+
+# -----------------------------------------------------------
+## Colors
+
 autoload -U colors && colors
 RED="\[\033[0;31m\]"
 YELLOW="\[\033[0;33m\]"
@@ -21,6 +77,9 @@ LS_COLORS=$LS_COLORS:'di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:s
 export LS_COLORS
 zstyle ':completion:*' list-colors 'di=33:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+# -----------------------------------------------------------
+## Additional Configs
 
 # CASE_SENSITIVE="true"
 
@@ -65,22 +124,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-syntax-highlighting)
 
-# User configuration
-export PATH="/Users/effulgence/.rbenv/shims:/Users/effulgence/.rvm/gems/ruby-2.2.1/bin:/Users/effulgence/.rvm/gems/ruby-2.2.1@global/bin:/Users/effulgence/.rvm/rubies/ruby-2.2.1/bin:/Users/effulgence/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/effulgence/.rvm/bin"
-
-# Added by Anaconda3 4.1.1 installer
-export PATH="/Users/effulgence/anaconda/bin:$PATH"
-
-# Node packages
-export PATH="$HOME/.npm-packages/bin:$PATH"
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# Spark
-export SPARK_HOME=/Users/effulgence/spark
-export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
-
-# You may need to manually set your language environment
+#You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
@@ -95,24 +139,3 @@ export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
-alias server='http-server -o --cors'
-alias ni='npm install'
-alias ns='npm start'
-alias nrd='npm run dev'
-alias nrb='npm run build'
-alias dojo='cd ~/dev/_dojo'
-
-bindkey "^[^[[C" forward-word
-bindkey "^[^[[D" backward-word
-
