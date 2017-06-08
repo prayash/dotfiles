@@ -1069,6 +1069,8 @@
 	<string>91D3B55E-73B2-4829-B2F4-EDC7DB2A5A6F</string>
 	<key>DimBackgroundWindows</key>
 	<false/>
+	<key>DimInactiveSplitPanes</key>
+	<true/>
 	<key>DimOnlyText</key>
 	<true/>
 	<key>GlobalKeyMap</key>
@@ -1188,6 +1190,8 @@
 	</dict>
 	<key>HideScrollbar</key>
 	<false/>
+	<key>HideTab</key>
+	<true/>
 	<key>HotKeyBookmark</key>
 	<string>1ED49FC0-6AD9-444B-A13C-D3D4ED035881</string>
 	<key>HotKeyTogglesWindow</key>
@@ -1241,15 +1245,15 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>588 400 445 77 0 0 1280 777 </string>
+	<string>588 301 445 77 0 0 1280 777 </string>
 	<key>NSWindow Frame Preferences</key>
 	<string>753 585 606 456 0 0 1920 1057 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>330 289 620 392 0 0 1280 777 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>276 315 918 381 0 0 1280 777 </string>
+	<string>286 159 918 495 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 359 1280 418 0 0 1280 777 </string>
+	<string>0 337 1280 440 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>152 50 650 594 0 0 1280 777 </string>
 	<key>NeverWarnAboutShortLivedSessions_91D3B55E-73B2-4829-B2F4-EDC7DB2A5A6F</key>
@@ -1391,26 +1395,26 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.38603794574737549</real>
+				<real>0.3874785304069519</real>
 				<key>Color Space</key>
 				<string>Calibrated</string>
 				<key>Green Component</key>
-				<real>0.04647354781627655</real>
+				<real>0.23845258355140686</real>
 				<key>Red Component</key>
-				<real>0.93631696701049805</real>
+				<real>0.64363348484039307</real>
 			</dict>
 			<key>Ansi 6 Color</key>
 			<dict>
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.76880520582199097</real>
+				<real>0.839028000831604</real>
 				<key>Color Space</key>
 				<string>Calibrated</string>
 				<key>Green Component</key>
-				<real>0.77125942707061768</real>
+				<real>0.47043189406394958</real>
 				<key>Red Component</key>
-				<real>0.35177591443061829</real>
+				<real>0.56527280807495117</real>
 			</dict>
 			<key>Ansi 7 Color</key>
 			<dict>
@@ -1454,13 +1458,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.084129750728607178</real>
+				<real>0.11759774386882782</real>
 				<key>Color Space</key>
 				<string>Calibrated</string>
 				<key>Green Component</key>
-				<real>0.084128305315971375</real>
+				<real>0.11759573966264725</real>
 				<key>Red Component</key>
-				<real>0.084130816161632538</real>
+				<real>0.11759927868843079</real>
 			</dict>
 			<key>Background Image Location</key>
 			<string></string>
@@ -1481,6 +1485,8 @@
 			<false/>
 			<key>Blur</key>
 			<true/>
+			<key>Blur Radius</key>
+			<real>1.5100060096153847</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -1499,15 +1505,19 @@
 			<key>Command</key>
 			<string></string>
 			<key>Cursor Boost</key>
-			<real>0.0036392405063291142</real>
+			<real>0.0</real>
 			<key>Cursor Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.73333334922790527</real>
+				<real>0.99999129772186279</real>
+				<key>Color Space</key>
+				<string>Calibrated</string>
 				<key>Green Component</key>
-				<real>0.73333334922790527</real>
+				<real>0.99997437000274658</real>
 				<key>Red Component</key>
-				<real>0.73333334922790527</real>
+				<real>1</real>
 			</dict>
 			<key>Cursor Guide Color</key>
 			<dict>
@@ -1561,7 +1571,7 @@
 			<key>Guid</key>
 			<string>91D3B55E-73B2-4829-B2F4-EDC7DB2A5A6F</string>
 			<key>Horizontal Spacing</key>
-			<real>1.1000000000000001</real>
+			<real>1</real>
 			<key>Idle Code</key>
 			<integer>0</integer>
 			<key>Jobs to Ignore</key>
@@ -1867,6 +1877,8 @@
 				<key>Red Component</key>
 				<real>0.023</real>
 			</dict>
+			<key>Minimum Contrast</key>
+			<real>0.0</real>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
@@ -1912,6 +1924,8 @@
 			<key>Shortcut</key>
 			<string></string>
 			<key>Silence Bell</key>
+			<false/>
+			<key>Smart Cursor Color</key>
 			<false/>
 			<key>Sync Title</key>
 			<false/>
@@ -2057,26 +2071,26 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.38438758254051208</real>
+				<real>0.3869921863079071</real>
 				<key>Color Space</key>
 				<string>Calibrated</string>
 				<key>Green Component</key>
-				<real>0.049305267632007599</real>
+				<real>0.23695287108421326</real>
 				<key>Red Component</key>
-				<real>0.93760097026824951</real>
+				<real>0.64539575576782227</real>
 			</dict>
 			<key>Ansi 6 Color</key>
 			<dict>
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.76891064643859863</real>
+				<real>0.83956575393676758</real>
 				<key>Color Space</key>
 				<string>Calibrated</string>
 				<key>Green Component</key>
-				<real>0.771201491355896</real>
+				<real>0.46992760896682739</real>
 				<key>Red Component</key>
-				<real>0.35269838571548462</real>
+				<real>0.56659919023513794</real>
 			</dict>
 			<key>Ansi 7 Color</key>
 			<dict>
@@ -2116,13 +2130,13 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.084129750728607178</real>
+				<real>0.11759774386882782</real>
 				<key>Color Space</key>
 				<string>Calibrated</string>
 				<key>Green Component</key>
-				<real>0.084128305315971375</real>
+				<real>0.11759573966264725</real>
 				<key>Red Component</key>
-				<real>0.084130816161632538</real>
+				<real>0.11759927868843079</real>
 			</dict>
 			<key>Background Image Location</key>
 			<string></string>
@@ -2166,12 +2180,16 @@
 			<string></string>
 			<key>Cursor Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.73333334922790527</real>
+				<real>0.99999129772186279</real>
+				<key>Color Space</key>
+				<string>Calibrated</string>
 				<key>Green Component</key>
-				<real>0.73333334922790527</real>
+				<real>0.99997437000274658</real>
 				<key>Red Component</key>
-				<real>0.73333334922790527</real>
+				<real>1</real>
 			</dict>
 			<key>Cursor Guide Color</key>
 			<dict>
@@ -2225,7 +2243,7 @@
 			<key>Guid</key>
 			<string>1ED49FC0-6AD9-444B-A13C-D3D4ED035881</string>
 			<key>Horizontal Spacing</key>
-			<real>1.1000000000000001</real>
+			<real>1</real>
 			<key>Idle Code</key>
 			<integer>0</integer>
 			<key>Jobs to Ignore</key>
@@ -2671,11 +2689,13 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-03-23T17:01:07Z</date>
+	<date>2017-04-24T03:43:15Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
+	<key>ShowFullScreenTabBar</key>
+	<false/>
 	<key>SplitPaneDimmingAmount</key>
-	<real>0.59999999999999998</real>
+	<real>0.41424028445512828</real>
 	<key>TabStyle</key>
 	<integer>1</integer>
 	<key>UseBorder</key>
@@ -2687,7 +2707,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.14</string>
+	<string>3.0.15</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>

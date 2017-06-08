@@ -24,15 +24,15 @@ export PATH="$PATH:$HOME/.rbenv/shims:$HOME/.rvm/gems/ruby-2.2.1@global/bin:$HOM
 export PATH="$PATH:$HOME/.npm-packages/bin"
 
 # Anaconda
-export PATH="$HOME/anaconda/bin:$PATH"
+export PATH="$HOME/anaconda/envs/python2/bin:$PATH"
 
 # Spark
-export SPARK_HOME=/Users/effulgence/spark
+# export SPARK_HOME=/Users/effulgence/spark
 # export PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
 # export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:$PYTHONPATH
 
-# export ANACONDA_ROOT="~/anaconda"
-# export PYSPARK_DRIVER_PYTHON=$ANACONDA_ROOT/bin/ipython
+export ANACONDA_ROOT="~/anaconda"
+export PYTHONPATH=$ANACONDA_ROOT/bin/python2.7
 # export PYSPARK_PYTHON=$ANACONDA_ROOT/bin/python
 
 # -----------------------------------------------------------
@@ -55,6 +55,7 @@ alias nrd='npm run dev'
 alias nrb='npm run build'
 alias dojo='cd ~/dev/_dojo'
 alias pyspark='~/spark/bin/spark-submit'
+alias ga='git add .'
 
 # -----------------------------------------------------------
 ## Key Bindings
@@ -139,3 +140,17 @@ plugins=(git zsh-syntax-highlighting)
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# Docker restart
+function docker-start() {
+  machine_status=$(docker-machine status)
+
+  if [ "Stopped" == $machine_status ]
+  then
+    docker-machine start default
+  fi
+
+  eval "$(docker-machine env default)"
+}
+
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
