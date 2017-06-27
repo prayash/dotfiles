@@ -2,7 +2,7 @@
 ## Init
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/effulgence/.oh-my-zsh
+export ZSH=/Users/$(whoami)/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 # Set name of the theme to load.
@@ -32,8 +32,6 @@ export PATH="$HOME/anaconda/envs/python2/bin:$PATH"
 # export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:$PYTHONPATH
 
 export ANACONDA_ROOT="~/anaconda"
-export PYTHONPATH=$ANACONDA_ROOT/bin/python2.7
-# export PYSPARK_PYTHON=$ANACONDA_ROOT/bin/python
 
 # -----------------------------------------------------------
 ## Aliases
@@ -49,13 +47,29 @@ export PYTHONPATH=$ANACONDA_ROOT/bin/python2.7
 
 alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
 alias server='http-server -o --cors'
+alias dojo='cd ~/dev/_dojo'
+
+# NPM
 alias ni='npm install'
 alias ns='npm start'
 alias nrd='npm run dev'
 alias nrb='npm run build'
-alias dojo='cd ~/dev/_dojo'
-alias pyspark='~/spark/bin/spark-submit'
+
+# GitHub
+alias go='git-open'
+alias gf='git fetch'
+alias gl='git log'
+alias gst='git status'
 alias ga='git add .'
+alias gcm='git commit -m'
+alias gch='git checkout'
+alias gchb='git checkout -b'
+alias gbrm='git branch -D'
+alias gm='git merge'
+alias grb='git rebase'
+alias grbc='git rebase --continue'
+alias grba='git rebase --abort'
+alias grbs='git rebase --skip'
 
 # -----------------------------------------------------------
 ## Key Bindings
@@ -151,6 +165,14 @@ function docker-start() {
   fi
 
   eval "$(docker-machine env default)"
+}
+
+# Auto open a pull request in browser
+pr () {
+  local repo=`git remote -v | grep -m 1 "origin.*(push)" | sed -e "s/.*github.com[:/]\(.*\)\.git.*/\1/"`
+  local branch=`git name-rev --name-only HEAD`
+  echo "... creating pull request for branch \"$branch\" in \"$repo\""
+  open https://github.com/$repo/pull/new/$branch
 }
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
