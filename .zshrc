@@ -40,11 +40,10 @@ export ANACONDA_ROOT="~/anaconda"
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias editrc='code ~/Developer/.zshrc'
+
+# Handy lil things
 alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
 alias server='http-server -o --cors'
 alias dojo='cd ~/dev/_dojo'
@@ -54,6 +53,12 @@ alias ni='npm install'
 alias ns='npm start'
 alias nrd='npm run dev'
 alias nrb='npm run build'
+
+# Yarn
+alias ys='yarn start'
+alias yrb='yarn run build'
+alias yrt='yarn run test'
+alias yrp='yarn run publish'
 
 # GitHub
 alias go='git-open'
@@ -156,6 +161,9 @@ plugins=(git zsh-syntax-highlighting)
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
+# -----------------------------------------------------------
+## Docker
+
 # Docker restart
 function docker-start() {
   machine_status=$(docker-machine status)
@@ -168,12 +176,22 @@ function docker-start() {
   eval "$(docker-machine env default)"
 }
 
-# Auto open a pull request in browser
-pr () {
+# -----------------------------------------------------------
+## GitHub Helpers
+
+# From Solomon Hawk: Auto open a pull request in browser
+function pr() {
   local repo=`git remote -v | grep -m 1 "origin.*(push)" | sed -e "s/.*github.com[:/]\(.*\)\.git.*/\1/"`
   local branch=`git name-rev --name-only HEAD`
   echo "... creating pull request for branch \"$branch\" in \"$repo\""
   open https://github.com/$repo/pull/new/$branch
 }
 
+# From Ian Brennan: checkout master, pull changes, checkout the branch you were on, then rebase
+function update() {
+  git checkout master && git pull && git checkout - && git rebase master
+}
+
+# -----------------------------------------------------------
+# Ruby
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi

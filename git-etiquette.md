@@ -18,3 +18,7 @@
   - `git push -f <remote> <branch-name>`
   - `git checkout master`
   - `git merge <branch-name>`
+
+## Neat features
+- Use `git bisect` to find a culprit commit which introduced a bug at some point in time.
+- Use `git ls-files | grep ".js\$"` to list all js files tracked by Git.
