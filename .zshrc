@@ -1,5 +1,20 @@
+# zshrc
+# Prayash Thapa (prayash@effulgence.io)
+
 # -----------------------------------------------------------
 ## Init
+
+
+# nvm
+export NVM_LAZY_LOAD=true
+
+plugins+=(zsh-nvm)
+
+# zsh auto-suggestions
+plugins+=(zsh-autosuggestions)
+
+# zsh-syntax highlight
+ plugins+=(zsh-syntax-highlighting)
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/$(whoami)/.oh-my-zsh
@@ -17,14 +32,27 @@ ZSH_THEME="effulgence"
 # Default
 export PATH="$HOME/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
 
+# MySQL
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
 # Ruby
-export PATH="$PATH:$HOME/.rbenv/shims:$HOME/.rvm/gems/ruby-2.2.1@global/bin:$HOME/.rvm/bin"
+export PATH="$PATH:$HOME/.rbenv/shims"
+
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 # Node
 export PATH="$PATH:$HOME/.npm-packages/bin"
 
 # Anaconda
 export PATH="$HOME/anaconda/envs/python2/bin:$PATH"
+
+# Python
+export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
+
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # Spark
 # export SPARK_HOME=/Users/effulgence/spark
@@ -41,12 +69,12 @@ export ANACONDA_ROOT="~/anaconda"
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-alias erc='code ~/Developer/.zshrc'
+# Source and edit .zshrc
+alias serc='source ~/.zshrc && code ~/Developer/.zshrc'
 
-# Handy lil things
-alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
-alias server='http-server -o --cors'
-alias dojo='cd ~/dev/_dojo'
+# Node
+alias n6='nvm use 6'
+alias n8='nvm use 8'
 
 # NPM
 alias ni='npm install'
@@ -56,28 +84,54 @@ alias nrb='npm run build'
 
 # Yarn
 alias ys='yarn start'
+alias yrd='yarn run dev'
 alias yrb='yarn run build'
 alias yrt='yarn run test'
-alias yrp='yarn run publish'
+alias yf='yarn format'
+alias yl='yarn lint'
+alias yw='yarn workspace'
 
 # GitHub
+alias clone='git clone'
 alias pull='git pull'
 alias push='git push'
+alias diff='git diff'
+alias status='git status'
+alias add='git add'
+alias fetch='git fetch'
+alias merge='git merge'
+alias mergeff='git merge --ff-only'
+alias rebase='git rebase'
+alias commit='git commit'
+alias amend='git commit --amend'
+
 alias go='git-open'
-alias gf='git fetch'
-alias gl='git log'
+alias glog='git log'
 alias gst='git status'
-alias ga='git add .'
+alias ga='git add'
+alias gf='git fetch'
 alias gcm='git commit -m'
-alias gp='git push'
+alias gm='git merge'
+alias gr='git rebase'
 alias gch='git checkout'
 alias gchb='git checkout -b'
 alias gbrm='git branch -D'
-alias gm='git merge'
-alias grb='git rebase'
 alias grbc='git rebase --continue'
 alias grba='git rebase --abort'
 alias grbs='git rebase --skip'
+
+# Directories
+alias d='cd ~/dev'
+alias dfiles='cd ~/Developer && code .'
+alias dojo='cd ~/dev/_dojo'
+
+# Ruby
+alias be='bundle exec'
+
+# Utils
+alias server='http-server -o --cors -c-1 -a localhost -p 8000'
+alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
+
 
 # -----------------------------------------------------------
 ## Key Bindings
@@ -145,7 +199,8 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting)
+plugins=(zsh-autosuggestions)
+plugins=(zsh-syntax-highlighting)
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -179,7 +234,7 @@ function docker-start() {
 }
 
 # -----------------------------------------------------------
-## GitHub Helpers
+## Utility
 
 # From Solomon Hawk: Auto open a pull request in browser
 function pr() {
@@ -194,6 +249,16 @@ function update() {
   git checkout master && git pull && git checkout - && git rebase master
 }
 
+# Flush DNS
+function flushDNS() {
+  sudo killall -HUP mDNSResponder
+}
+
 # -----------------------------------------------------------
-# Ruby
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /Users/effulgence/dev/privia/apps/desktop/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/effulgence/dev/privia/apps/desktop/node_modules/tabtab/.completions/electron-forge.zsh
+
+# direnv
+eval "$(direnv hook zsh)"
