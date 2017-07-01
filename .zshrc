@@ -41,7 +41,7 @@ export ANACONDA_ROOT="~/anaconda"
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-alias editrc='code ~/Developer/.zshrc'
+alias erc='code ~/Developer/.zshrc'
 
 # Handy lil things
 alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
@@ -61,6 +61,8 @@ alias yrt='yarn run test'
 alias yrp='yarn run publish'
 
 # GitHub
+alias pull='git pull'
+alias push='git push'
 alias go='git-open'
 alias gf='git fetch'
 alias gl='git log'
@@ -124,7 +126,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -145,8 +147,8 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-syntax-highlighting)
 
-#You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
