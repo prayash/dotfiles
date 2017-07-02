@@ -1,3 +1,6 @@
+# zshrc
+# Prayash Thapa (prayash@effulgence.io)
+
 # -----------------------------------------------------------
 ## Init
 
@@ -41,12 +44,8 @@ export ANACONDA_ROOT="~/anaconda"
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-alias erc='code ~/Developer/.zshrc'
-
-# Handy lil things
-alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
-alias server='http-server -o --cors'
-alias dojo='cd ~/dev/_dojo'
+# Source and edit .zshrc
+alias serc='source ~/.zshrc && code ~/Developer/.zshrc'
 
 # NPM
 alias ni='npm install'
@@ -78,6 +77,16 @@ alias grb='git rebase'
 alias grbc='git rebase --continue'
 alias grba='git rebase --abort'
 alias grbs='git rebase --skip'
+
+# Directories
+alias d='cd ~/dev'
+alias dfiles='cd ~/Developer && code .'
+alias dojo='cd ~/dev/_dojo'
+
+# Utils
+alias server='http-server -o --cors'
+alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
+
 
 # -----------------------------------------------------------
 ## Key Bindings
