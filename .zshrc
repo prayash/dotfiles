@@ -62,18 +62,18 @@ alias yrp='yarn run publish'
 # GitHub
 alias pull='git pull'
 alias push='git push'
+alias diff='git diff'
+alias status='git status'
+alias add='git add .'
+alias fetch='git fetch'
+alias merge='git merge'
+alias rebase='git rebase'
+alias commit='git commit -m'
 alias go='git-open'
-alias gf='git fetch'
-alias gl='git log'
-alias gst='git status'
-alias ga='git add .'
-alias gcm='git commit -m'
-alias gp='git push'
+alias glog='git log'
 alias gch='git checkout'
 alias gchb='git checkout -b'
 alias gbrm='git branch -D'
-alias gm='git merge'
-alias grb='git rebase'
 alias grbc='git rebase --continue'
 alias grba='git rebase --abort'
 alias grbs='git rebase --skip'
@@ -206,3 +206,6 @@ function update() {
 # -----------------------------------------------------------
 # Ruby
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
