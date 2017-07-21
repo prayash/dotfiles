@@ -50,14 +50,18 @@ alias serc='source ~/.zshrc && code ~/Developer/.zshrc'
 # NPM
 alias ni='npm install'
 alias ns='npm start'
-alias nrd='npm run dev'
 alias nrb='npm run build'
+alias nrp='npm run publish'
+alias nrd='npm run deploy'
 
 # Yarn
 alias ys='yarn start'
 alias yrb='yarn run build'
 alias yrt='yarn run test'
 alias yrp='yarn run publish'
+alias yrd='yarn run deploy'
+alias yf='yarn format'
+alias yl='yarn lint'
 
 # GitHub
 alias pull='git pull'
