@@ -71,6 +71,7 @@ alias fetch='git fetch'
 alias merge='git merge'
 alias rebase='git rebase'
 alias commit='git commit'
+alias amend='git commit --amend'
 
 alias go='git-open'
 alias glog='git log'
@@ -93,7 +94,7 @@ alias dfiles='cd ~/Developer && code .'
 alias dojo='cd ~/dev/_dojo'
 
 # Utils
-alias server='http-server -o --cors'
+alias server='http-server -o --cors -c-1 -a localhost -p 8000'
 alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
 
 
