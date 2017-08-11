@@ -19,6 +19,15 @@
   - `git checkout master`
   - `git merge <branch-name>`
 
+## Replaying Commits from another remote (ie: Bitbucket)
+- git checkout develop
+- git pull --rebase origin develop
+- git pull --rebase bitbucket develop
+- git push bitbucket develop
+- git push origin develop
+- git checkout <branch>
+- git rebase develop
+
 ## Neat features
 - Use `git bisect` to find a culprit commit which introduced a bug at some point in time.
 - Use `git ls-files | grep ".js\$"` to list all js files tracked by Git.
