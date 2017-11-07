@@ -31,3 +31,5 @@
 ## Neat features
 - Use `git bisect` to find a culprit commit which introduced a bug at some point in time.
 - Use `git ls-files | grep ".js\$"` to list all js files tracked by Git.
+- `git checkout -- <filename>`
+- `git push -f origin <branch-name>:develop` will overwrite the remote `develop` branch with the local `<branch-name>` branch

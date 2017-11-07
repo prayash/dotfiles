@@ -62,6 +62,7 @@ alias yf='yarn format'
 alias yl='yarn lint'
 
 # GitHub
+alias clone='git clone'
 alias pull='git pull'
 alias push='git push'
 alias diff='git diff'
@@ -92,6 +93,10 @@ alias grbs='git rebase --skip'
 alias d='cd ~/dev'
 alias dfiles='cd ~/Developer && code .'
 alias dojo='cd ~/dev/_dojo'
+
+# Rails
+alias rails='bundle exec rails'
+alias rake='bundle exec rake'
 
 # Utils
 alias server='http-server -o --cors -c-1 -a localhost -p 8000'
@@ -219,3 +224,9 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/prayash/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/prayash/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/prayash/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/prayash/google-cloud-sdk/completion.zsh.inc'; fi
