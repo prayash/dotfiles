@@ -17,7 +17,7 @@
   - Verify that everything is still functional before force pushing.
   - `git push -f <remote> <branch-name>`
   - `git checkout master`
-  - `git merge <branch-name>`
+  - `git merge --ff-only <branch-name>`
 
 ## Replaying Commits from another remote (ie: Bitbucket)
 - git checkout develop
