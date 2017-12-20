@@ -1,25 +1,31 @@
 {
+  "extensions.ignoreRecommendations": false,
   "editor.fontFamily": "Roboto Mono, Menlo, Monaco, 'Courier New', monospace",
-  "editor.tabSize": 2,
-  "workbench.colorTheme": "Material",
-  "workbench.iconTheme": "material-icon-theme",
-  "window.zoomLevel": 0,
-  "material-icon-theme.showUpdateMessage": false,
-  "editor.renderIndentGuides": false,
   "editor.formatOnSave": true,
-  "prettier.singleQuote": true,
-  "prettier.semi": false,
-  "prettier.useTabs": false,
-  "prettier.cssEnable": ["css", "less", "sass", "scss"],
+  "editor.minimap.enabled": false,
+  "editor.renderIndentGuides": false,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "explorer.openEditors.visible": 0,
   "flow.pathToFlow": "$(npm bin)/flow",
-  "javascript.validate.enable": false,
   "flow.useNPMPackagedFlow": true,
+  "javascript.validate.enable": false,
+  "material-icon-theme.showUpdateMessage": false,
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.useTabs": false,
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,
-    "**/build": true
+    "**/build": true,
+    "**/assets": true,
+    "**/_build": true
   },
-  "window.title": "${activeEditorMedium}${separator}${rootName}",
+  "typescript.check.npmIsInstalled": false,
+  "update.channel": "none",
+  "window.zoomLevel": 0,
+  "workbench.colorTheme": "Material",
+  "workbench.iconTheme": "material-icon-theme",
   "workbench.colorCustomizations": {
     "tab.activeBackground": "#282c34",
     "tab.inactiveBackground": "#282c34",
@@ -29,5 +35,6 @@
     "titleBar.activeBackground": "#282c34",
     "editor.background": "#282c34",
     "editorGroupHeader.tabsBackground": "#282c34"
-  }
+  },
+  "window.title": "${activeEditorMedium}${separator}${rootName}"
 }
