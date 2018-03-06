@@ -8,6 +8,13 @@
 export ZSH=/Users/$(whoami)/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
+# nvm
+export NVM_LAZY_LOAD=true
+source ~/.zsh/zsh-nvm/zsh-nvm.plugin.zsh
+
+# zsh auto-suggestions
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -47,6 +54,10 @@ export ANACONDA_ROOT="~/anaconda"
 # Source and edit .zshrc
 alias serc='source ~/.zshrc && code ~/Developer/.zshrc'
 
+# Node
+alias n6='nvm use 6'
+alias n8='nvm use 8'
+
 # NPM
 alias ni='npm install'
 alias ns='npm start'
@@ -60,6 +71,7 @@ alias yrb='yarn run build'
 alias yrt='yarn run test'
 alias yf='yarn format'
 alias yl='yarn lint'
+alias yw='yarn workspace'
 
 # GitHub
 alias clone='git clone'
@@ -95,9 +107,8 @@ alias d='cd ~/dev'
 alias dfiles='cd ~/Developer && code .'
 alias dojo='cd ~/dev/_dojo'
 
-# Rails
-alias rails='bundle exec rails'
-alias rake='bundle exec rake'
+# Ruby
+alias be='bundle exec'
 
 # Utils
 alias server='http-server -o --cors -c-1 -a localhost -p 8000'
@@ -170,7 +181,8 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting)
+plugins=(zsh-autosuggestions)
+plugins=(zsh-syntax-highlighting)
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
@@ -204,7 +216,7 @@ function docker-start() {
 }
 
 # -----------------------------------------------------------
-## GitHub Helpers
+## Utility
 
 # From Solomon Hawk: Auto open a pull request in browser
 function pr() {
@@ -219,12 +231,15 @@ function update() {
   git checkout master && git pull && git checkout - && git rebase master
 }
 
+# Flush DNS
+function flushDNS() {
+  sudo killall -HUP mDNSResponder
+}
+
 # -----------------------------------------------------------
-# Ruby
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/prayash/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/prayash/google-cloud-sdk/path.zsh.inc'; fi
