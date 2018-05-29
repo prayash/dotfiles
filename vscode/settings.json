@@ -1,14 +1,11 @@
 {
-  "extensions.ignoreRecommendations": false,
+  "extensions.ignoreRecommendations": true,
   "editor.fontFamily": "Roboto Mono, Menlo, Monaco, 'Courier New', monospace",
-  "editor.formatOnSave": true,
   "editor.minimap.enabled": false,
   "editor.renderIndentGuides": false,
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "explorer.openEditors.visible": 0,
-  "flow.pathToFlow": "$(npm bin)/flow",
-  "flow.useNPMPackagedFlow": true,
   "javascript.validate.enable": false,
   "material-icon-theme.showUpdateMessage": false,
   "prettier.semi": false,
@@ -36,5 +33,8 @@
     "editor.background": "#282c34",
     "editorGroupHeader.tabsBackground": "#282c34"
   },
-  "window.title": "${activeEditorMedium}${separator}${rootName}"
+  "window.title": "${activeEditorMedium}${separator}${rootName}",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false
 }
