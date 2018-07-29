@@ -4,16 +4,21 @@
 # -----------------------------------------------------------
 ## Init
 
-# Path to your oh-my-zsh installation.
-export ZSH=/Users/$(whoami)/.oh-my-zsh
-source $ZSH/oh-my-zsh.sh
 
 # nvm
 export NVM_LAZY_LOAD=true
-source ~/.zsh/zsh-nvm/zsh-nvm.plugin.zsh
+
+plugins+=(zsh-nvm)
 
 # zsh auto-suggestions
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+plugins+=(zsh-autosuggestions)
+
+# zsh-syntax highlight
+ plugins+=(zsh-syntax-highlighting)
+
+# Path to your oh-my-zsh installation.
+export ZSH=/Users/$(whoami)/.oh-my-zsh
+source $ZSH/oh-my-zsh.sh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -35,6 +40,12 @@ export PATH="$PATH:$HOME/.npm-packages/bin"
 
 # Anaconda
 export PATH="$HOME/anaconda/envs/python2/bin:$PATH"
+
+# Python
+export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
+
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # Spark
 # export SPARK_HOME=/Users/effulgence/spark
@@ -241,8 +252,10 @@ function flushDNS() {
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/prayash/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/prayash/google-cloud-sdk/path.zsh.inc'; fi
+# -----------------------------------------------------------
+# direnv
+eval "$(direnv hook zsh)"
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/prayash/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/prayash/google-cloud-sdk/completion.zsh.inc'; fi
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /Users/effulgence/dev/privia/apps/desktop/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/effulgence/dev/privia/apps/desktop/node_modules/tabtab/.completions/electron-forge.zsh
