@@ -27,7 +27,7 @@
     "tab.activeBackground": "#282c34",
     "tab.inactiveBackground": "#282c34",
     "activityBar.background": "#282c34",
-    "editorGroup.background": "#282c34",
+    "editorGroup.emptyBackground": "#282c34",
     "sideBar.background": "#282c34",
     "titleBar.activeBackground": "#282c34",
     "editor.background": "#282c34",
@@ -36,5 +36,10 @@
   "window.title": "${activeEditorMedium}${separator}${rootName}",
   "editor.formatOnSave": true,
   "editor.formatOnPaste": false,
-  "editor.formatOnType": false
+  "editor.formatOnType": false,
+  "editor.fontSize": 11,
+  "editor.lineHeight": 21,
+  "editor.fontWeight": "300",
+  "git.ignoreMissingGitWarning": true,
+  "javascript.updateImportsOnFileMove.enabled": "never"
 }
