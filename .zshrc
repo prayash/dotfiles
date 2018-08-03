@@ -32,8 +32,15 @@ ZSH_THEME="effulgence"
 # Default
 export PATH="$HOME/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
 
+# MySQL
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
 # Ruby
-export PATH="$PATH:$HOME/.rbenv/shims:$HOME/.rvm/gems/ruby-2.2.1@global/bin:$HOME/.rvm/bin"
+export PATH="$PATH:$HOME/.rbenv/shims"
+
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
 
 # Node
 export PATH="$PATH:$HOME/.npm-packages/bin"
@@ -248,14 +255,10 @@ function flushDNS() {
 }
 
 # -----------------------------------------------------------
-# rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# -----------------------------------------------------------
-# direnv
-eval "$(direnv hook zsh)"
 
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
 [[ -f /Users/effulgence/dev/privia/apps/desktop/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/effulgence/dev/privia/apps/desktop/node_modules/tabtab/.completions/electron-forge.zsh
+
+# direnv
+eval "$(direnv hook zsh)"

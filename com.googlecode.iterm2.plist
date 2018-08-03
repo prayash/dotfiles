@@ -1189,7 +1189,7 @@
 		</dict>
 	</dict>
 	<key>HideScrollbar</key>
-	<false/>
+	<true/>
 	<key>HotKeyBookmark</key>
 	<string>1ED49FC0-6AD9-444B-A13C-D3D4ED035881</string>
 	<key>HotKeyTogglesWindow</key>
@@ -1250,16 +1250,10 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
-	<key>NSWindow Frame NSFontPanel</key>
-	<string>518 380 445 77 0 0 1440 878 </string>
-	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>437 1399 620 392 -213 900 1920 1058 </string>
-	<key>NSWindow Frame SessionsPreferences</key>
-	<string>269 139 606 456 0 0 1440 878 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>261 233 796 473 0 0 1440 878 </string>
+	<string>181 1722 770 429 0 1200 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 878 1440 454 0 0 1440 878 </string>
+	<string>0 628 1920 550 0 0 1920 1178 </string>
 	<key>NeverWarnAboutShortLivedSessions_91D3B55E-73B2-4829-B2F4-EDC7DB2A5A6F</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_91D3B55E-73B2-4829-B2F4-EDC7DB2A5A6F_selection</key>
@@ -1269,6 +1263,18 @@
 		<dict>
 			<key>ASCII Anti Aliased</key>
 			<true/>
+			<key>AWDS Pane Directory</key>
+			<string></string>
+			<key>AWDS Pane Option</key>
+			<string>Recycle</string>
+			<key>AWDS Tab Directory</key>
+			<string></string>
+			<key>AWDS Tab Option</key>
+			<string>No</string>
+			<key>AWDS Window Directory</key>
+			<string></string>
+			<key>AWDS Window Option</key>
+			<string>No</string>
 			<key>Ambiguous Double Width</key>
 			<false/>
 			<key>Ansi 0 Color</key>
@@ -1544,7 +1550,7 @@
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
-			<string>No</string>
+			<string>Advanced</string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Description</key>
@@ -1953,6 +1959,18 @@
 		<dict>
 			<key>ASCII Anti Aliased</key>
 			<true/>
+			<key>AWDS Pane Directory</key>
+			<string></string>
+			<key>AWDS Pane Option</key>
+			<string>Recycle</string>
+			<key>AWDS Tab Directory</key>
+			<string></string>
+			<key>AWDS Tab Option</key>
+			<string>No</string>
+			<key>AWDS Window Directory</key>
+			<string></string>
+			<key>AWDS Window Option</key>
+			<string>No</string>
 			<key>Ambiguous Double Width</key>
 			<false/>
 			<key>Ansi 0 Color</key>
@@ -2210,7 +2228,7 @@
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
-			<string>No</string>
+			<string>Advanced</string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Description</key>
@@ -2642,15 +2660,13 @@
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
-	<string>F4059AEC-8BF6-4846-B37F-517D7AB98E0B</string>
+	<string>47D5B57E-30B1-4881-923D-AA39C0D020B2</string>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
 	<integer>0</integer>
-	<key>NoSyncPermissionToShowTip</key>
-	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>518393777.41441703</real>
+	<real>554430899.036134</real>
 	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
 	<key>PerformDNSLookups</key>
@@ -2689,7 +2705,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/prayash/Developer</string>
+	<string>/Users/effulgence/Developer</string>
 	<key>Print In Black And White</key>
 	<true/>
 	<key>PromptOnQuit</key>
@@ -2699,11 +2715,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/final.xml?shard=29</string>
+	<string>https://iterm2.com/appcasts/final.xml?shard=28</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-09-27T14:12:21Z</date>
+	<date>2018-07-29T16:21:48Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
@@ -2723,7 +2739,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.1.2</string>
+	<string>3.1.7</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
