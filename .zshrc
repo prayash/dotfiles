@@ -10,11 +10,8 @@ export NVM_LAZY_LOAD=true
 
 plugins+=(zsh-nvm)
 
-# zsh auto-suggestions
-plugins+=(zsh-autosuggestions)
-
-# zsh-syntax highlight
- plugins+=(zsh-syntax-highlighting)
+# zsh plugins
+plugins+=(zsh-autosuggestions zsh-syntax-highlighting z node osx)
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/$(whoami)/.oh-my-zsh
@@ -119,6 +116,7 @@ alias gbrm='git branch -D'
 alias grbc='git rebase --continue'
 alias grba='git rebase --abort'
 alias grbs='git rebase --skip'
+alias grhh='git reset --hard HEAD'
 
 # Directories
 alias d='cd ~/dev'
