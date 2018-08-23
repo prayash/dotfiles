@@ -1250,10 +1250,12 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>650 589 620 392 0 0 1920 1178 </string>
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>181 1722 770 429 0 1200 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 628 1920 550 0 0 1920 1178 </string>
+	<string>-285 2618 2560 586 -285 1200 2560 1418 </string>
 	<key>NeverWarnAboutShortLivedSessions_91D3B55E-73B2-4829-B2F4-EDC7DB2A5A6F</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_91D3B55E-73B2-4829-B2F4-EDC7DB2A5A6F_selection</key>
@@ -2665,6 +2667,8 @@
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
 	<integer>0</integer>
+	<key>NoSyncPermissionToShowTip</key>
+	<false/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>554430899.036134</real>
 	<key>PMPrintingExpandedStateForPrint2</key>
@@ -2719,9 +2723,11 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-07-29T16:21:48Z</date>
+	<date>2018-08-19T01:32:46Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
+	<key>ShowFullScreenTabBar</key>
+	<true/>
 	<key>SplitPaneDimmingAmount</key>
 	<real>0.59999999999999998</real>
 	<key>TabStyle</key>
@@ -2739,7 +2745,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.1.7</string>
+	<string>3.2.0</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
