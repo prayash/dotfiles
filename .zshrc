@@ -101,6 +101,7 @@ alias mergeff='git merge --ff-only'
 alias rebase='git rebase'
 alias commit='git commit'
 alias amend='git commit --amend'
+alias unwip='git reset --soft HEAD^'
 
 alias go='git-open'
 alias glog='git log'
