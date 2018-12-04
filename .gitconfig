@@ -40,3 +40,8 @@
 	excludesfile = /Users/effulgence/.gitignore_global
 [commit]
 	template = /Users/effulgence/.stCommitMsg
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

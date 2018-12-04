@@ -1,27 +1,27 @@
 # zshrc
-# Prayash Thapa (prayash@effulgence.io)
+# Prayash Thapa (hi@prayash.io)
 
 # -----------------------------------------------------------
 ## Init
 
-
-# nvm
-export NVM_LAZY_LOAD=true
-
-plugins+=(zsh-nvm)
-
 # zsh plugins
-plugins+=(zsh-autosuggestions zsh-syntax-highlighting z node osx)
+plugins+=(zsh-autosuggestions zsh-syntax-highlighting z node macos asdf)
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/$(whoami)/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
+# Pure prompt by https://github.com/sindresorhus/pure
+fpath+=$HOME/.zsh/pure
+autoload -U promptinit; promptinit
+prompt pure
+
+# DISABLE THEME FOR PURE PROMPT!
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="effulgence"
+ZSH_THEME=""
 
 # -----------------------------------------------------------
 ## Paths
@@ -29,34 +29,34 @@ ZSH_THEME="effulgence"
 # Default
 export PATH="$HOME/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
 
+# Some custom binaries I use are stored here
+export PATH="$HOME/bin:$PATH"
+
 # MySQL
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+# export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
 # Ruby
-export PATH="$PATH:$HOME/.rbenv/shims"
+# export PATH="$PATH:$HOME/.rbenv/shims"
 
 # rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# Node
-export PATH="$PATH:$HOME/.npm-packages/bin"
-
-# Anaconda
-export PATH="$HOME/anaconda/envs/python2/bin:$PATH"
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
 
 # Python
-export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
+# export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
 
 # Rust
-export PATH="$HOME/.cargo/bin:$PATH"
+# export PATH="$HOME/.cargo/bin:$PATH"
 
-# Spark
-# export SPARK_HOME=/Users/effulgence/spark
-# export PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
-# export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:$PYTHONPATH
+# Android
+# export ANDROID_HOME=$HOME/Library/Android/sdk
+# export PATH=$PATH:$ANDROID_HOME/emulator
+# export PATH=$PATH:$ANDROID_HOME/tools
+# export PATH=$PATH:$ANDROID_HOME/tools/bin
+# export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-export ANACONDA_ROOT="~/anaconda"
+# Fastlane
+# export PATH="$HOME/.fastlane/bin:$PATH"
 
 # -----------------------------------------------------------
 ## Aliases
@@ -67,11 +67,12 @@ export ANACONDA_ROOT="~/anaconda"
 # For a full list of active aliases, run `alias`.
 
 # Source and edit .zshrc
-alias serc='source ~/.zshrc && code ~/Developer/.zshrc'
+alias serc='source ~/.zshrc'
 
-# Node
+# nvm
 alias n6='nvm use 6'
 alias n8='nvm use 8'
+alias nu='nvm use'
 
 # NPM
 alias ni='npm install'
@@ -88,9 +89,10 @@ alias yf='yarn format'
 alias yl='yarn lint'
 alias yw='yarn workspace'
 
-# GitHub
+# Git
 alias clone='git clone'
 alias pull='git pull'
+alias fpull='git fetch -p; git pull'
 alias push='git push'
 alias diff='git diff'
 alias status='git status'
@@ -103,56 +105,55 @@ alias commit='git commit'
 alias amend='git commit --amend'
 alias unwip='git reset --soft HEAD^'
 
-alias go='git-open'
+alias gto='git-open'
 alias glog='git log'
 alias gst='git status'
 alias ga='git add'
 alias gf='git fetch'
+alias gb='git branch'
+alias gbd='git branch -D'
 alias gcm='git commit -m'
 alias gm='git merge'
 alias gr='git rebase'
 alias gch='git checkout'
 alias gchb='git checkout -b'
-alias gbrm='git branch -D'
 alias grbc='git rebase --continue'
 alias grba='git rebase --abort'
 alias grbs='git rebase --skip'
 alias grhh='git reset --hard HEAD'
+alias grlb='git branch | grep -v "master" | xargs git branch -D'
+
+# Ruby
+alias be='bundle exec'
+alias bepi='bundle exec pod install'
+alias bef='bundle exec fastlane'
+
+# Rails
+alias rmigrate='bin/rails db:migrate RAILS_ENV=development'
+alias rs='rails s'
+alias rc='rails c'
 
 # Directories
 alias d='cd ~/dev'
 alias dfiles='cd ~/Developer && code .'
 alias dojo='cd ~/dev/_dojo'
 
-# Ruby
-alias be='bundle exec'
-
 # Utils
 alias server='http-server -o --cors -c-1 -a localhost -p 8000'
 alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
+alias kill3000='kill -9 $(lsof -i tcp:3000 -t)'
 
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/prayash/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/prayash/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/prayash/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/prayash/google-cloud-sdk/completion.zsh.inc'; fi
 
 # -----------------------------------------------------------
 ## Key Bindings
 
 bindkey "^[^[[C" forward-word
 bindkey "^[^[[D" backward-word
-
-# -----------------------------------------------------------
-## Colors
-
-autoload -U colors && colors
-RED="\[\033[0;31m\]"
-YELLOW="\[\033[0;33m\]"
-GREEN="\[\033[0;32m\]"
-BLUE="\[\033[1;34m\]"
-CYAN="\[\033[0;36m\]"
-PURPLE="\[\033[0;35m\]"
-NO_COLOUR="\[\033[0m\]"
-LS_COLORS=$LS_COLORS:'di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-export LS_COLORS
-zstyle ':completion:*' list-colors 'di=33:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # -----------------------------------------------------------
 ## Additional Configs
@@ -255,9 +256,6 @@ function flushDNS() {
 
 # -----------------------------------------------------------
 
-# tabtab source for electron-forge package
-# uninstall by removing these lines or running `tabtab uninstall electron-forge`
-[[ -f /Users/effulgence/dev/privia/apps/desktop/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/effulgence/dev/privia/apps/desktop/node_modules/tabtab/.completions/electron-forge.zsh
-
-# direnv
-eval "$(direnv hook zsh)"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
