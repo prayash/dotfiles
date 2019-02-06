@@ -4,7 +4,6 @@
 # -----------------------------------------------------------
 ## Init
 
-
 # nvm
 export NVM_LAZY_LOAD=true
 
@@ -17,11 +16,17 @@ plugins+=(zsh-autosuggestions zsh-syntax-highlighting z node osx)
 export ZSH=/Users/$(whoami)/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
+# Pure prompt by https://github.com/sindresorhus/pure
+autoload -U promptinit; promptinit
+prompt pure
+
+# DISABLE THEME FOR PURE PROMPT!
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="effulgence"
+# ZSH_THEME="effulgence"
+ZSH_THEME=""
 
 # -----------------------------------------------------------
 ## Paths
@@ -58,6 +63,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 export ANACONDA_ROOT="~/anaconda"
 
+# Fastlane
+export PATH="$HOME/.fastlane/bin:$PATH"
+
 # -----------------------------------------------------------
 ## Aliases
 
@@ -91,6 +99,7 @@ alias yw='yarn workspace'
 # GitHub
 alias clone='git clone'
 alias pull='git pull'
+alias fpull='git fetch; git pull'
 alias push='git push'
 alias diff='git diff'
 alias status='git status'
@@ -132,6 +141,8 @@ alias be='bundle exec'
 alias server='http-server -o --cors -c-1 -a localhost -p 8000'
 alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
 
+# Dorkmode
+alias dorkmode='cat ~/Developer/dorkmode.js | pbcopy; code /Applications/Slack.app/Contents/Resources/app.asar.unpacked/src/static/ssb-interop.js'
 
 # -----------------------------------------------------------
 ## Key Bindings
