@@ -80,6 +80,7 @@ alias serc='source ~/.zshrc && code ~/Developer/.zshrc'
 # Node
 alias n6='nvm use 6'
 alias n8='nvm use 8'
+alias nu='nvm use'
 
 # NPM
 alias ni='npm install'
@@ -129,6 +130,11 @@ alias grba='git rebase --abort'
 alias grbs='git rebase --skip'
 alias grhh='git reset --hard HEAD'
 
+# Rails
+alias rmigrate='bin/rails db:migrate RAILS_ENV=development'
+alias rs='rails s'
+alias rc='rails c'
+
 # Directories
 alias d='cd ~/dev'
 alias dfiles='cd ~/Developer && code .'
@@ -149,22 +155,6 @@ alias dorkmode='cat ~/Developer/dorkmode.js | pbcopy; code /Applications/Slack.a
 
 bindkey "^[^[[C" forward-word
 bindkey "^[^[[D" backward-word
-
-# -----------------------------------------------------------
-## Colors
-
-autoload -U colors && colors
-RED="\[\033[0;31m\]"
-YELLOW="\[\033[0;33m\]"
-GREEN="\[\033[0;32m\]"
-BLUE="\[\033[1;34m\]"
-CYAN="\[\033[0;36m\]"
-PURPLE="\[\033[0;35m\]"
-NO_COLOUR="\[\033[0m\]"
-LS_COLORS=$LS_COLORS:'di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-export LS_COLORS
-zstyle ':completion:*' list-colors 'di=33:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # -----------------------------------------------------------
 ## Additional Configs
@@ -267,9 +257,8 @@ function flushDNS() {
 
 # -----------------------------------------------------------
 
-# tabtab source for electron-forge package
-# uninstall by removing these lines or running `tabtab uninstall electron-forge`
-[[ -f /Users/effulgence/dev/privia/apps/desktop/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/effulgence/dev/privia/apps/desktop/node_modules/tabtab/.completions/electron-forge.zsh
-
 # direnv
 eval "$(direnv hook zsh)"
+
+# Fuzzy finder
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
