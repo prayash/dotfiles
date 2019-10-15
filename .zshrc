@@ -10,7 +10,7 @@ export NVM_LAZY_LOAD=true
 plugins+=(zsh-nvm)
 
 # zsh plugins
-plugins+=(zsh-autosuggestions zsh-syntax-highlighting z node osx)
+plugins+=(zsh-autosuggestions zsh-syntax-highlighting z node osx asdf)
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/$(whoami)/.oh-my-zsh
@@ -55,6 +55,13 @@ export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# Android
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # Spark
 # export SPARK_HOME=/Users/effulgence/spark
@@ -131,6 +138,7 @@ alias grbs='git rebase --skip'
 alias grhh='git reset --hard HEAD'
 
 # Rails
+alias be='bundle exec'
 alias rmigrate='bin/rails db:migrate RAILS_ENV=development'
 alias rs='rails s'
 alias rc='rails c'
@@ -140,15 +148,10 @@ alias d='cd ~/dev'
 alias dfiles='cd ~/Developer && code .'
 alias dojo='cd ~/dev/_dojo'
 
-# Ruby
-alias be='bundle exec'
-
 # Utils
 alias server='http-server -o --cors -c-1 -a localhost -p 8000'
 alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
-
-# Dorkmode
-alias dorkmode='cat ~/Developer/dorkmode.js | pbcopy; code /Applications/Slack.app/Contents/Resources/app.asar.unpacked/src/static/ssb-interop.js'
+alias kill3000='kill -9 $(lsof -i tcp:3000 -t)'
 
 # -----------------------------------------------------------
 ## Key Bindings
@@ -262,3 +265,5 @@ eval "$(direnv hook zsh)"
 
 # Fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+. $HOME/.asdf/asdf.sh
+. $HOME/.asdf/completions/asdf.bash
