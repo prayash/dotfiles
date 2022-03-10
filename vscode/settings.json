@@ -2,7 +2,6 @@
   "extensions.ignoreRecommendations": true,
   "editor.fontFamily": "Roboto Mono, Menlo, Monaco, 'Courier New', monospace",
   "editor.minimap.enabled": false,
-  "editor.renderIndentGuides": false,
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "explorer.openEditors.visible": 0,
@@ -21,7 +20,7 @@
   "typescript.check.npmIsInstalled": false,
   "update.mode": "none",
   "editor.snippetSuggestions": "top",
-  "window.zoomLevel": 0,
+  "window.zoomLevel": 1,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorCustomizations": {
     "tab.activeBackground": "#141414",
@@ -39,11 +38,15 @@
   "window.title": "${activeEditorMedium}${separator}${rootName}",
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
-  "editor.formatOnType": true,
+  "editor.formatOnType": false,
   "editor.lineHeight": 20,
   "git.ignoreMissingGitWarning": true,
   "javascript.updateImportsOnFileMove.enabled": "never",
   "editor.fontWeight": "500",
   "breadcrumbs.enabled": false,
-  "workbench.colorTheme": "CodeSandbox"
+  "workbench.colorTheme": "CodeSandbox Black",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
