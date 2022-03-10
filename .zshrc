@@ -1,22 +1,18 @@
 # zshrc
-# Prayash Thapa (prayash@effulgence.io)
+# Prayash Thapa (hi@prayash.io)
 
 # -----------------------------------------------------------
 ## Init
 
-# nvm
-export NVM_LAZY_LOAD=true
-
-plugins+=(zsh-nvm)
-
 # zsh plugins
-plugins+=(zsh-autosuggestions zsh-syntax-highlighting z node osx asdf)
+plugins+=(zsh-autosuggestions zsh-syntax-highlighting z node macos asdf)
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/$(whoami)/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 # Pure prompt by https://github.com/sindresorhus/pure
+fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
 prompt pure
 
@@ -25,7 +21,6 @@ prompt pure
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="effulgence"
 ZSH_THEME=""
 
 # -----------------------------------------------------------
@@ -34,44 +29,34 @@ ZSH_THEME=""
 # Default
 export PATH="$HOME/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
 
+# Some custom binaries I use are stored here
+export PATH="$HOME/bin:$PATH"
+
 # MySQL
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+# export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
 # Ruby
-export PATH="$PATH:$HOME/.rbenv/shims"
+# export PATH="$PATH:$HOME/.rbenv/shims"
 
 # rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# Node
-export PATH="$PATH:$HOME/.npm-packages/bin"
-
-# Anaconda
-export PATH="$HOME/anaconda/envs/python2/bin:$PATH"
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
 
 # Python
-export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
+# export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
 
 # Rust
-export PATH="$HOME/.cargo/bin:$PATH"
+# export PATH="$HOME/.cargo/bin:$PATH"
 
 # Android
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-
-# Spark
-# export SPARK_HOME=/Users/effulgence/spark
-# export PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
-# export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:$PYTHONPATH
-
-export ANACONDA_ROOT="~/anaconda"
+# export ANDROID_HOME=$HOME/Library/Android/sdk
+# export PATH=$PATH:$ANDROID_HOME/emulator
+# export PATH=$PATH:$ANDROID_HOME/tools
+# export PATH=$PATH:$ANDROID_HOME/tools/bin
+# export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # Fastlane
-export PATH="$HOME/.fastlane/bin:$PATH"
+# export PATH="$HOME/.fastlane/bin:$PATH"
 
 # -----------------------------------------------------------
 ## Aliases
@@ -82,9 +67,9 @@ export PATH="$HOME/.fastlane/bin:$PATH"
 # For a full list of active aliases, run `alias`.
 
 # Source and edit .zshrc
-alias serc='source ~/.zshrc && code ~/Developer/.zshrc'
+alias serc='source ~/.zshrc'
 
-# Node
+# nvm
 alias n6='nvm use 6'
 alias n8='nvm use 8'
 alias nu='nvm use'
@@ -104,10 +89,10 @@ alias yf='yarn format'
 alias yl='yarn lint'
 alias yw='yarn workspace'
 
-# GitHub
+# Git
 alias clone='git clone'
 alias pull='git pull'
-alias fpull='git fetch; git pull'
+alias fpull='git fetch -p; git pull'
 alias push='git push'
 alias diff='git diff'
 alias status='git status'
@@ -120,7 +105,7 @@ alias commit='git commit'
 alias amend='git commit --amend'
 alias unwip='git reset --soft HEAD^'
 
-alias go='git-open'
+alias gto='git-open'
 alias glog='git log'
 alias gst='git status'
 alias ga='git add'
@@ -136,9 +121,14 @@ alias grbc='git rebase --continue'
 alias grba='git rebase --abort'
 alias grbs='git rebase --skip'
 alias grhh='git reset --hard HEAD'
+alias grlb='git branch | grep -v "master" | xargs git branch -D'
+
+# Ruby
+alias be='bundle exec'
+alias bepi='bundle exec pod install'
+alias bef='bundle exec fastlane'
 
 # Rails
-alias be='bundle exec'
 alias rmigrate='bin/rails db:migrate RAILS_ENV=development'
 alias rs='rails s'
 alias rc='rails c'
@@ -152,6 +142,12 @@ alias dojo='cd ~/dev/_dojo'
 alias server='http-server -o --cors -c-1 -a localhost -p 8000'
 alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
 alias kill3000='kill -9 $(lsof -i tcp:3000 -t)'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/prayash/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/prayash/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/prayash/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/prayash/google-cloud-sdk/completion.zsh.inc'; fi
 
 # -----------------------------------------------------------
 ## Key Bindings
@@ -260,10 +256,6 @@ function flushDNS() {
 
 # -----------------------------------------------------------
 
-# direnv
-eval "$(direnv hook zsh)"
-
-# Fuzzy finder
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
