@@ -13,9 +13,13 @@ export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # -----------------------------------------------------------
-## Syntax Highlighting
+## Plugins!
 
+## Syntax Highlighting (https://github.com/zsh-users/zsh-syntax-highlighting)
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+## Autosuggestions (https://github.com/zsh-users/zsh-autosuggestions)
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # -----------------------------------------------------------
 ## Prompt Configuration
@@ -35,11 +39,9 @@ PROMPT='%B%F{magenta} %~%F{green}${vcs_info_msg_0_}%f ❯%f%b '
 setopt NO_CASE_GLOB
 
 # -----------------------------------------------------------
-## Autocompletion
+## Autocompletion 
 
 autoload -Uz compinit && compinit
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==34=34}:${(s.:.)LS_COLORS}")';
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select
