@@ -1,62 +1,60 @@
 # zshrc
 # Prayash Thapa (hi@prayash.io)
+# Run `ln -s ~/Developer/.zshrc .zshrc` in ~ to bind.
+
+# You may need to manually set your language environment.
+export LANG=en_US.UTF-8
 
 # -----------------------------------------------------------
-## Init
+## Colors
 
-# zsh plugins
-plugins+=(zsh-autosuggestions zsh-syntax-highlighting z node macos asdf)
-
-# Path to your oh-my-zsh installation.
-export ZSH=/Users/$(whoami)/.oh-my-zsh
-source $ZSH/oh-my-zsh.sh
-
-# Pure prompt by https://github.com/sindresorhus/pure
-fpath+=$HOME/.zsh/pure
-autoload -U promptinit; promptinit
-prompt pure
-
-# DISABLE THEME FOR PURE PROMPT!
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME=""
+autoload -U colors && colors
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # -----------------------------------------------------------
-## Paths
+## Syntax Highlighting
 
-# Default
-export PATH="$HOME/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Some custom binaries I use are stored here
-export PATH="$HOME/bin:$PATH"
+# -----------------------------------------------------------
+## Prompt Configuration
 
-# MySQL
-# export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+# Load version control information
+autoload -Uz vcs_info
+precmd() { vcs_info }
 
-# Ruby
-# export PATH="$PATH:$HOME/.rbenv/shims"
+# Format the vcs_info_msg_0_ variable
+zstyle ':vcs_info:git:*' formats ' [%b]'
+ 
+# Set up the prompt (with git branch name)
+setopt PROMPT_SUBST
+PROMPT='%B%F{magenta} %~%F{green}${vcs_info_msg_0_}%f ❯%f%b '
+# RPROMPT="%F{111}%K{000}[%D{%f/%m/%y}|%@]"
 
-# rbenv
-# export PATH="$HOME/.rbenv/bin:$PATH"
-# eval "$(rbenv init -)"
+setopt NO_CASE_GLOB
 
-# Python
-# export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
+# -----------------------------------------------------------
+## Autocompletion
 
-# Rust
-# export PATH="$HOME/.cargo/bin:$PATH"
+autoload -Uz compinit && compinit
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Android
-# export ANDROID_HOME=$HOME/Library/Android/sdk
-# export PATH=$PATH:$ANDROID_HOME/emulator
-# export PATH=$PATH:$ANDROID_HOME/tools
-# export PATH=$PATH:$ANDROID_HOME/tools/bin
-# export PATH=$PATH:$ANDROID_HOME/platform-tools
+zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==34=34}:${(s.:.)LS_COLORS}")';
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' menu select
 
-# Fastlane
-# export PATH="$HOME/.fastlane/bin:$PATH"
+# -----------------------------------------------------------
+## Key Bindings
+
+bindkey "^[^[[C" forward-word
+bindkey "^[^[[D" backward-word
+
+# -----------------------------------------------------------
+## History Search
+
+bindkey "^[[A" up-line-or-search # up arrow bindkey
+bindkey "^[[B" down-line-or-search # down arrow
 
 # -----------------------------------------------------------
 ## Aliases
@@ -89,121 +87,186 @@ alias yf='yarn format'
 alias yl='yarn lint'
 alias yw='yarn workspace'
 
-# Git
-alias clone='git clone'
-alias pull='git pull'
-alias fpull='git fetch -p; git pull'
-alias push='git push'
-alias diff='git diff'
-alias status='git status'
-alias add='git add'
-alias fetch='git fetch'
-alias merge='git merge'
-alias mergeff='git merge --ff-only'
-alias rebase='git rebase'
-alias commit='git commit'
-alias amend='git commit --amend'
-alias unwip='git reset --soft HEAD^'
+# ls, the common ones I use a lot shortened for rapid fire usage
+alias l='ls -lAFh'   #long list,show almost all,show type,human readable
+alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
+alias lt='ls -ltFh'   #long list,sorted by date,show type,human readable
+alias ll='ls -l'      #long list
+alias ldot='ls -ld .*'
+alias lS='ls -1FSsh'
+alias lart='ls -1Fcart'
+alias lrt='ls -1Fcrt'
+alias lsr='ls -lARFh' #Recursive list of files and directories
+alias lsn='ls -1'     #A column contains name of files and directories
+
+alias zshrc='${=EDITOR} ${ZDOTDIR:-$HOME}/.zshrc' # Quick access to the .zshrc file
+
+alias grep='grep --color'
+alias sgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS} '
+
+alias t='tail -f'
+
+# Command line head / tail shortcuts
+alias -g H='| head'
+alias -g T='| tail'
+alias -g G='| grep'
+alias -g L="| less"
+alias -g M="| most"
+alias -g LL="2>&1 | less"
+alias -g CA="2>&1 | cat -A"
+alias -g NE="2> /dev/null"
+alias -g NUL="> /dev/null 2>&1"
+alias -g P="2>&1| pygmentize -l pytb"
+
+alias dud='du -d 1 -h'
+alias duf='du -sh *'
+(( $+commands[fd] )) || alias fd='find . -type d -name'
+alias ff='find . -type f -name'
+
+alias h='history'
+alias hgrep="fc -El 0 | grep"
+alias help='man'
+alias p='ps -f'
+alias sortnr='sort -n -r'
+alias unexport='unset'
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# zsh is able to auto-do some kungfoo
+# depends on the SUFFIX :)
+autoload -Uz is-at-least
+if is-at-least 4.2.0; then
+  # open browser on urls
+  if [[ -n "$BROWSER" ]]; then
+    _browser_fts=(htm html de org net com at cx nl se dk)
+    for ft in $_browser_fts; do alias -s $ft='$BROWSER'; done
+  fi
+
+  _editor_fts=(cpp cxx cc c hh h inl asc txt TXT tex)
+  for ft in $_editor_fts; do alias -s $ft='$EDITOR'; done
+
+  if [[ -n "$XIVIEWER" ]]; then
+    _image_fts=(jpg jpeg png gif mng tiff tif xpm)
+    for ft in $_image_fts; do alias -s $ft='$XIVIEWER'; done
+  fi
+
+  _media_fts=(ape avi flv m4a mkv mov mp3 mpeg mpg ogg ogm rm wav webm)
+  for ft in $_media_fts; do alias -s $ft=mplayer; done
+
+  #read documents
+  alias -s pdf=acroread
+  alias -s ps=gv
+  alias -s dvi=xdvi
+  alias -s chm=xchm
+  alias -s djvu=djview
+
+  #list whats inside packed file
+  alias -s zip="unzip -l"
+  alias -s rar="unrar l"
+  alias -s tar="tar tf"
+  alias -s tar.gz="echo "
+  alias -s ace="unace l"
+fi
+
+# Make zsh know about hosts already accessed by SSH
+zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
+
+# -----------------------------------------------------------
+## Git
 
 alias gto='git-open'
-alias glog='git log'
+alias gc='git clone'
+alias gpull='git pull'
+alias gfpull='git fetch -p; git pull'
+alias gpush='git push'
+alias gpushf='git push --force-with-lease'
+alias gdf='git diff'
+alias glg='git log'
 alias gst='git status'
-alias ga='git add'
-alias gf='git fetch'
+alias gad='git add'
 alias gb='git branch'
 alias gbd='git branch -D'
 alias gcm='git commit -m'
-alias gm='git merge'
-alias gr='git rebase'
+alias gcam='git commit --amend'
+alias gmff='git merge --ff-only'
+
 alias gch='git checkout'
 alias gchb='git checkout -b'
+
+alias gcfd='git clean -fd'
+alias grb='git rebase'
 alias grbc='git rebase --continue'
 alias grba='git rebase --abort'
 alias grbs='git rebase --skip'
 alias grhh='git reset --hard HEAD'
 alias grlb='git branch | grep -v "master" | xargs git branch -D'
-
-# Ruby
-alias be='bundle exec'
-alias bepi='bundle exec pod install'
-alias bef='bundle exec fastlane'
-
-# Rails
-alias rmigrate='bin/rails db:migrate RAILS_ENV=development'
-alias rs='rails s'
-alias rc='rails c'
+alias unwip='git reset --soft HEAD^'
 
 # Directories
 alias d='cd ~/dev'
 alias dfiles='cd ~/Developer && code .'
 alias dojo='cd ~/dev/_dojo'
 
+alias simrun="xcrun simctl spawn booted" # simrun LaunchApp -unlock com.apple.Preferences
+
+# -----------------------------------------------------------
+## Utility
+
+copypasta() {
+	local command="$@"
+	echo "$command\n$(eval {$command})" | tee >(pbcopy)
+}
+
+showCurrentXcodeSDK() {
+	xcrun --show-sdk-path --sdk $1
+}
+
+alias ugh='rm -rf ~/Library/Developer/Xcode/DerivedData'
+
+# -----------------------------------------------------------
+## Paths
+
+# Default
+export PATH="$HOME/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin"
+
+# Some custom binaries I use are stored here
+export PATH="$HOME/bin:$PATH"
+
+# MySQL
+# export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
+# Ruby
+# export PATH="$PATH:$HOME/.rbenv/shims"
+
+# rbenv
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
+
+# Python
+alias python=/opt/homebrew/bin/python3
+# export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
+
+# Rust
+# export PATH="$HOME/.cargo/bin:$PATH"
+
+# Android
+# export ANDROID_HOME=$HOME/Library/Android/sdk
+# export PATH=$PATH:$ANDROID_HOME/emulator
+# export PATH=$PATH:$ANDROID_HOME/tools
+# export PATH=$PATH:$ANDROID_HOME/tools/bin
+# export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# Fastlane
+# export PATH="$HOME/.fastlane/bin:$PATH"
+
+# -----------------------------------------------------------
 # Utils
+
 alias server='http-server -o --cors -c-1 -a localhost -p 8000'
 alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
 alias kill3000='kill -9 $(lsof -i tcp:3000 -t)'
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/prayash/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/prayash/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/prayash/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/prayash/google-cloud-sdk/completion.zsh.inc'; fi
-
-# -----------------------------------------------------------
-## Key Bindings
-
-bindkey "^[^[[C" forward-word
-bindkey "^[^[[D" backward-word
-
-# -----------------------------------------------------------
-## Additional Configs
-
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions)
-plugins=(zsh-syntax-highlighting)
-
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -254,8 +317,19 @@ function flushDNS() {
   sudo killall -HUP mDNSResponder
 }
 
+function list_xcode_provisioning_profiles() {
+    while IFS= read -rd '' f; do
+        2> /dev/null /usr/libexec/PlistBuddy -c 'Print :Entitlements:application-identifier' /dev/stdin \
+            <<< $(security cms -D -i "$f")
+
+    done < <(find "$HOME/Library/MobileDevice/Provisioning Profiles" -name '*.mobileprovision' -print0)
+}
+
 # -----------------------------------------------------------
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Load Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
