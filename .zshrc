@@ -46,6 +46,9 @@ zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select
 
+# Let's make `cd` itself needless!
+setopt auto_cd
+
 # -----------------------------------------------------------
 ## Key Bindings
 
