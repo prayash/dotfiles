@@ -46,6 +46,9 @@ zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu select
 
+# Let's make `cd` itself needless!
+setopt auto_cd
+
 # -----------------------------------------------------------
 ## Key Bindings
 
@@ -335,3 +338,14 @@ export NVM_DIR="$HOME/.nvm"
 
 # Load Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+
+# -----------------------------------------------------------
+# Fileicons
+
+function changeIcon() {
+  icon_path=$1
+  app_path="/Applications/$2.app"
+
+  fileicon set $app_path "$1"
+}
