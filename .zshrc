@@ -338,3 +338,14 @@ export NVM_DIR="$HOME/.nvm"
 
 # Load Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+
+# -----------------------------------------------------------
+# Fileicons
+
+function changeIcon() {
+  icon_path=$1
+  app_path="/Applications/$2.app"
+
+  fileicon set $app_path "$1"
+}
