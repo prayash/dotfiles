@@ -272,6 +272,7 @@ alias python=/opt/homebrew/bin/python3
 alias server='http-server -o --cors -c-1 -a localhost -p 8000'
 alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
 alias kill3000='kill -9 $(lsof -i tcp:3000 -t)'
+alias whatsMyWiFiPassword='security find-generic-password -ga "PrayPal" | grep password:'
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then

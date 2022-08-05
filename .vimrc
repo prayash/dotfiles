@@ -3,9 +3,10 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable
+syntax on
 
 set background=dark
-colorscheme hybrid
+
 
 " Set extra options when running in GUI mode
 if has("gui_running")
