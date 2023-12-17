@@ -274,6 +274,16 @@ alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/Lau
 alias kill3000='kill -9 $(lsof -i tcp:3000 -t)'
 alias whatsMyWiFiPassword='security find-generic-password -ga "PrayPal" | grep password:'
 
+function changeIcons() {
+  echo "💅 Setting app icons..."
+  sudo fileicon set /Applications/iTerm.app ~/Dropbox/Archive/AppIcons/Hyper__Terminal.icns
+  sudo fileicon set /Applications/Focusrite\ Control.app ~/Dropbox/Archive/AppIcons/Focusrite_Control.icns
+  sudo fileicon set /Applications/Ableton\ Live\ 11\ Suite.app/ ~/Dropbox/Archive/AppIcons/Ableton_Live_Suite_11.icns
+  sudo fileicon set /Applications/Fork.app ~/Dropbox/Archive/AppIcons/Fork.icns
+  sudo fileicon set /Applications/Notion.app ~/Dropbox/Archive/AppIcons/Notion.icns
+  echo "✨ Done."
+}
+
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -288,34 +298,14 @@ alias whatsMyWiFiPassword='security find-generic-password -ga "PrayPal" | grep p
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # -----------------------------------------------------------
-## Docker
-
-# Docker restart
-function docker-start() {
-  machine_status=$(docker-machine status)
-
-  if [ "Stopped" == $machine_status ]
-  then
-    docker-machine start default
-  fi
-
-  eval "$(docker-machine env default)"
-}
-
-# -----------------------------------------------------------
 ## Utility
 
-# From Solomon Hawk: Auto open a pull request in browser
+# From Solomon Hawk: Auto open a GitHub pull request in browser
 function pr() {
   local repo=`git remote -v | grep -m 1 "origin.*(push)" | sed -e "s/.*github.com[:/]\(.*\)\.git.*/\1/"`
   local branch=`git name-rev --name-only HEAD`
   echo "... creating pull request for branch \"$branch\" in \"$repo\""
   open https://github.com/$repo/pull/new/$branch
-}
-
-# From Ian Brennan: checkout master, pull changes, checkout the branch you were on, then rebase
-function update() {
-  git checkout master && git pull && git checkout - && git rebase master
 }
 
 # Flush DNS
@@ -339,3 +329,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # Load Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export CPATH=/opt/homebrew/include
+export LIBRARY_PATH=/opt/homebrew/lib
