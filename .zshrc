@@ -272,6 +272,18 @@ alias python=/opt/homebrew/bin/python3
 alias server='http-server -o --cors -c-1 -a localhost -p 8000'
 alias killdups='/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user;killall Finder;echo "Rebuilt Open With, relaunching Finder"'
 alias kill3000='kill -9 $(lsof -i tcp:3000 -t)'
+alias whatsMyWiFiPassword='security find-generic-password -ga "PrayPal" | grep password:'
+
+function changeIcons() {
+  echo "💅 Setting app icons..."
+  sudo fileicon set /Applications/Brave\ Browser.app/ ~/Dropbox/Archive/AppIcons/Brave.icns
+  sudo fileicon set /Applications/iTerm.app ~/Dropbox/Archive/AppIcons/Hyper__Terminal.icns
+  sudo fileicon set /Applications/Focusrite\ Control.app ~/Dropbox/Archive/AppIcons/Focusrite_Control.icns
+  sudo fileicon set /Applications/Ableton\ Live\ 11\ Suite.app/ ~/Dropbox/Archive/AppIcons/Ableton_Live_Suite_11.icns
+  sudo fileicon set /Applications/Fork.app ~/Dropbox/Archive/AppIcons/Fork.icns
+  sudo fileicon set /Applications/Notion.app ~/Dropbox/Archive/AppIcons/Notion.icns
+  echo "✨ Done."
+}
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -287,34 +299,14 @@ alias kill3000='kill -9 $(lsof -i tcp:3000 -t)'
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # -----------------------------------------------------------
-## Docker
-
-# Docker restart
-function docker-start() {
-  machine_status=$(docker-machine status)
-
-  if [ "Stopped" == $machine_status ]
-  then
-    docker-machine start default
-  fi
-
-  eval "$(docker-machine env default)"
-}
-
-# -----------------------------------------------------------
 ## Utility
 
-# From Solomon Hawk: Auto open a pull request in browser
+# From Solomon Hawk: Auto open a GitHub pull request in browser
 function pr() {
   local repo=`git remote -v | grep -m 1 "origin.*(push)" | sed -e "s/.*github.com[:/]\(.*\)\.git.*/\1/"`
   local branch=`git name-rev --name-only HEAD`
   echo "... creating pull request for branch \"$branch\" in \"$repo\""
   open https://github.com/$repo/pull/new/$branch
-}
-
-# From Ian Brennan: checkout master, pull changes, checkout the branch you were on, then rebase
-function update() {
-  git checkout master && git pull && git checkout - && git rebase master
 }
 
 # Flush DNS
@@ -330,6 +322,25 @@ function list_xcode_provisioning_profiles() {
     done < <(find "$HOME/Library/MobileDevice/Provisioning Profiles" -name '*.mobileprovision' -print0)
 }
 
+func listLRCatalogPreviews() {
+  local target_dir="$1"
+
+  # If no argument is provided, default to the current directory
+  if [[ -z "$target_dir" ]]; then
+    echo "No directory specified. Running in the current directory: $(pwd)"
+    target_dir="."
+  fi
+
+  # Initialize a counter for numbering
+  local count=0
+
+  # Execute the find command with numbered, colored output
+  find "$target_dir" -type d \( -path "*/.*" -prune \) -o -type d -name "*Previews.lrdata" \
+      -exec sh -c 'size=$(du -sh "{}" | cut -f1); path=$(realpath "{}"); \
+      count=$((count+1)); \
+      printf "%s\033[33m%s\033[0m %s\033[32m%s\033[0m\n" "[$((count))] " "$size" " " "$path"' _ {} \;
+}
+
 # -----------------------------------------------------------
 
 export NVM_DIR="$HOME/.nvm"
@@ -339,6 +350,8 @@ export NVM_DIR="$HOME/.nvm"
 # Load Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+export CPATH=/opt/homebrew/include
+export LIBRARY_PATH=/opt/homebrew/lib
 
 # -----------------------------------------------------------
 # Fileicons
@@ -349,3 +362,4 @@ function changeIcon() {
 
   fileicon set $app_path "$1"
 }
+
