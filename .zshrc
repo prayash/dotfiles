@@ -332,3 +332,13 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 export CPATH=/opt/homebrew/include
 export LIBRARY_PATH=/opt/homebrew/lib
+
+# -----------------------------------------------------------
+# Fileicons
+
+function changeIcon() {
+  icon_path=$1
+  app_path="/Applications/$2.app"
+
+  fileicon set $app_path "$1"
+}
