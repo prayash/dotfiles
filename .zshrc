@@ -277,6 +277,7 @@ alias whatsMyWiFiPassword='security find-generic-password -ga "PrayPal" | grep p
 
 function changeIcons() {
   echo "💅 Setting app icons..."
+  sudo fileicon set /Applications/Brave\ Browser.app/ ~/Dropbox/Archive/AppIcons/Brave.icns
   sudo fileicon set /Applications/iTerm.app ~/Dropbox/Archive/AppIcons/Hyper__Terminal.icns
   sudo fileicon set /Applications/Focusrite\ Control.app ~/Dropbox/Archive/AppIcons/Focusrite_Control.icns
   sudo fileicon set /Applications/Ableton\ Live\ 11\ Suite.app/ ~/Dropbox/Archive/AppIcons/Ableton_Live_Suite_11.icns
@@ -322,6 +323,25 @@ function list_xcode_provisioning_profiles() {
     done < <(find "$HOME/Library/MobileDevice/Provisioning Profiles" -name '*.mobileprovision' -print0)
 }
 
+func listLRCatalogPreviews() {
+  local target_dir="$1"
+
+  # If no argument is provided, default to the current directory
+  if [[ -z "$target_dir" ]]; then
+    echo "No directory specified. Running in the current directory: $(pwd)"
+    target_dir="."
+  fi
+
+  # Initialize a counter for numbering
+  local count=0
+
+  # Execute the find command with numbered, colored output
+  find "$target_dir" -type d \( -path "*/.*" -prune \) -o -type d -name "*Previews.lrdata" \
+      -exec sh -c 'size=$(du -sh "{}" | cut -f1); path=$(realpath "{}"); \
+      count=$((count+1)); \
+      printf "%s\033[33m%s\033[0m %s\033[32m%s\033[0m\n" "[$((count))] " "$size" " " "$path"' _ {} \;
+}
+
 # -----------------------------------------------------------
 
 export NVM_DIR="$HOME/.nvm"
@@ -343,3 +363,4 @@ function changeIcon() {
 
   fileicon set $app_path "$1"
 }
+
