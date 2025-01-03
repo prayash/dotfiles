@@ -342,6 +342,35 @@ func listLRCatalogPreviews() {
       printf "%s\033[33m%s\033[0m %s\033[32m%s\033[0m\n" "[$((count))] " "$size" " " "$path"' _ {} \;
 }
 
+# setTimezoneOffsetForPhotos +05:45 . to set the photos EXIF metadata to Nepal's timezone
+func setTimezoneOffsetForPhotos() {
+  # Check if enough arguments are passed
+  if [[ $# -lt 2 ]]; then
+    echo "Usage: setTimezoneOffsetForPhotos <OFFSET> <FILE_OR_DIRECTORY>"
+    echo "Example: setTimezoneOffsetForPhotos +05:45 /path/to/photos"
+    return 1
+  fi
+
+  # Extract arguments
+  local offset="$1"
+  shift
+  local target="$@"
+
+  # Apply offset using exiftool
+  exiftool -overwrite_original_in_place \
+    -OffsetTime="$offset" \
+    -OffsetTimeOriginal="$offset" \
+    -OffsetTimeDigitized="$offset" \
+    "$target"
+
+  # Provide feedback
+  if [[ $? -eq 0 ]]; then
+    echo "Successfully updated timezone offsets to '$offset' for: $target"
+  else
+    echo "Failed to update timezone offsets."
+  fi
+}
+
 # -----------------------------------------------------------
 
 export NVM_DIR="$HOME/.nvm"
