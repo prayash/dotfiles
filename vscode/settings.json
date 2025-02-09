@@ -18,35 +18,83 @@
     "**/_build": true
   },
   "typescript.check.npmIsInstalled": false,
-  "update.mode": "none",
   "editor.snippetSuggestions": "top",
-  "window.zoomLevel": 1,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorCustomizations": {
-    "tab.activeBackground": "#141414",
-    "tab.inactiveBackground": "#141414",
-    "activityBar.background": "#141414",
-    "editorGroup.emptyBackground": "#141414",
-    "sideBar.background": "#141414",
-    "titleBar.activeBackground": "#141414",
-    "editor.background": "#141414",
-    "editorGroupHeader.tabsBackground": "#141414",
-    "statusBar.background": "#1A1A1A",
-    "statusBar.noFolderBackground": "#0A0A0D",
-    "statusBar.debuggingBackground": "#511f1f"
+    // "tab.activeBackground": "#141414",
+    // "tab.inactiveBackground": "#141414",
+    // "activityBar.background": "#141414",
+    // "editorGroup.emptyBackground": "#141414",
+    // "sideBar.background": "#141414",
+    // "titleBar.activeBackground": "#141414",
+    // "editor.background": "#141414",
+    // "editorGroupHeader.tabsBackground": "#141414",
+    // "statusBar.background": "#1A1A1A",
+    // "statusBar.noFolderBackground": "#0A0A0D",
+    // "statusBar.debuggingBackground": "#511f1f"
+  },
+  "editor.tokenColorCustomizations": {
+    "[CodeSandbox]": {
+      "strings": "#977CDC",
+      "numbers": "#977CDC",
+      "textMateRules": [
+        {
+          "scope": "comment.markup-link",
+          "settings": {
+            "foreground": "#DFE2E7"
+          }
+        },
+        {
+          "scope": "keyword.operator.new.js",
+          "settings": {
+            "foreground": "#977CDC"
+          }
+        },
+        {
+          "scope": "support.type.property-name",
+          "settings": {
+            "foreground": "#77B7D7"
+          }
+        },
+        {
+          "scope": [
+            "support.variable.property.js",
+            "support.variable.property.ts",
+            "support.variable.property.tsx"
+          ],
+          "settings": {
+            "foreground": "#FBCC43"
+          }
+        },
+        {
+          "scope": [
+            "variable.other.constant.property.js",
+            "variable.other.constant.property.ts",
+            "variable.other.constant.property.tsx"
+          ],
+          "settings": {
+            "foreground": "#FBCC43"
+          }
+        }
+      ]
+    }
   },
   "window.title": "${activeEditorMedium}${separator}${rootName}",
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "editor.formatOnType": false,
   "editor.lineHeight": 20,
+  "editor.stickyScroll.enabled": true,
   "git.ignoreMissingGitWarning": true,
   "javascript.updateImportsOnFileMove.enabled": "never",
-  "editor.fontWeight": "500",
-  "breadcrumbs.enabled": false,
-  "workbench.colorTheme": "CodeSandbox Black",
+  "editor.fontWeight": "400",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
+  "window.zoomLevel": 1,
+  "explorer.confirmDragAndDrop": false,
+  "workbench.colorTheme": "CodeSandbox",
+  "git.openRepositoryInParentFolders": "never"
 }
