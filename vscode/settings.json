@@ -1,6 +1,6 @@
 {
   "extensions.ignoreRecommendations": true,
-  "editor.fontFamily": "Roboto Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "Geist Mono, Roboto Mono, Menlo, Monaco, 'Courier New', monospace",
   "editor.minimap.enabled": false,
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
@@ -19,7 +19,7 @@
   },
   "typescript.check.npmIsInstalled": false,
   "editor.snippetSuggestions": "top",
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "chalice-icon-theme",
   "workbench.colorCustomizations": {
     // "tab.activeBackground": "#141414",
     // "tab.inactiveBackground": "#141414",
