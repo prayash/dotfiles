@@ -92,6 +92,13 @@ alias yf='yarn format'
 alias yl='yarn lint'
 alias yw='yarn workspace'
 
+# PNPM
+alias pi='pnpm i'
+alias ps='pnpm start'
+alias pd='pnpm dev'
+alias pb='pnpm build'
+alias pl='pnpm lint'
+
 # ls, the common ones I use a lot shortened for rapid fire usage
 alias l='ls -lAFh'   #long list,show almost all,show type,human readable
 alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
@@ -179,6 +186,29 @@ fi
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
 # -----------------------------------------------------------
+# Node.js
+
+# Auto-switch Node version using .nvmrc
+autoload_nvmrc() {
+  if [ -f .nvmrc ]; then
+    local node_version=$(nvm version)
+    local required_version=$(nvm version "$(cat .nvmrc)")
+
+    if [ "$required_version" = "N/A" ]; then
+      echo "Node version $(cat .nvmrc) not installed. Installing..."
+      nvm install
+    elif [ "$node_version" != "$required_version" ]; then
+      nvm use
+    fi
+  fi
+}
+
+# Trigger auto-load on directory change
+autoload -U add-zsh-hook
+add-zsh-hook chpwd autoload_nvmrc
+autoload_nvmrc  # Run on initial terminal load
+
+# -----------------------------------------------------------
 ## Git
 
 alias gto='git-open'
@@ -213,7 +243,6 @@ alias unwip='git reset --soft HEAD^'
 # Directories
 alias d='cd ~/dev'
 alias dfiles='cd ~/Developer && code .'
-alias dojo='cd ~/dev/_dojo'
 
 alias simrun="xcrun simctl spawn booted" # simrun LaunchApp -unlock com.apple.Preferences
 
@@ -252,7 +281,9 @@ export PATH="$HOME/bin:$PATH"
 
 # Python
 alias python=/opt/homebrew/bin/python3
-# export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
+
+# Created by `pipx` on 2025-02-12 04:14:33
+export PATH="$PATH:/Users/prayash/.local/bin"
 
 # Rust
 # export PATH="$HOME/.cargo/bin:$PATH"
@@ -372,6 +403,7 @@ func setTimezoneOffsetForPhotos() {
 }
 
 # -----------------------------------------------------------
+## NVM
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -384,7 +416,7 @@ export CPATH=/opt/homebrew/include
 export LIBRARY_PATH=/opt/homebrew/lib
 
 # -----------------------------------------------------------
-# Fileicons
+## Fileicons
 
 function changeIcon() {
   icon_path=$1
@@ -393,3 +425,56 @@ function changeIcon() {
   fileicon set $app_path "$1"
 }
 
+# -----------------------------------------------------------
+## C/C++ toolchains
+
+# GCC alias for standalone C files.
+gco() {
+  if [ $# -eq 0 ]; then
+    echo "Usage: gco <program_name> [additional flags]"
+    return 1
+  fi
+  program=$1
+  shift
+  mkdir -p build && gcc -o "build/$program" "$program.c" -lm $@ && "./build/$program"
+}
+
+# G++ alias for C++.
+g() {
+  local file=$1                 # Get the .cpp file
+  local name=${file%.cpp}       # Remove .cpp extension
+  local dir=$(dirname "$file")  # Get directory of source file
+  local build_dir="$dir/build"  # Create build dir path
+  mkdir -p "$build_dir"         # Create build directory
+  shift                         # Remove filename from args
+  g++ -std=c++17 "$file" -o "$build_dir/$name" $@ && "$build_dir/$name"
+}
+
+# Objective-C compilation and execution
+objc() {
+  if [ -z "$1" ]; then
+      echo "Usage: objc <filename.m>"
+      return 1
+  fi
+
+  # Get the filename without extension
+  filename=$(basename "$1" .m)
+  
+  # Create build directory if it doesn't exist
+  mkdir -p build
+  
+  # Compile and run
+  clang -framework Foundation "$1" -o "build/$filename" && "./build/$filename"
+}
+
+
+# Added by Windsurf
+export PATH="/Users/prayash/.codeium/windsurf/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/prayash/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
