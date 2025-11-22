@@ -354,6 +354,10 @@ function list_xcode_provisioning_profiles() {
     done < <(find "$HOME/Library/MobileDevice/Provisioning Profiles" -name '*.mobileprovision' -print0)
 }
 
+
+# -----------------------------------------------------------
+## Photo Tools
+
 func listLRCatalogPreviews() {
   local target_dir="$1"
 
@@ -373,7 +377,10 @@ func listLRCatalogPreviews() {
       printf "%s\033[33m%s\033[0m %s\033[32m%s\033[0m\n" "[$((count))] " "$size" " " "$path"' _ {} \;
 }
 
-# setTimezoneOffsetForPhotos +05:45 . to set the photos EXIF metadata to Nepal's timezone
+# Updates EXIF timezone offsets (Original, Digitized, and Composite) for target files.
+# Usage: setTimezoneOffsetForPhotos <OFFSET> <FILE_OR_DIR>
+# Example: setTimezoneOffsetForPhotos +05:45 ./nepal_trip
+# Dependencies: exiftool (modifies files in-place)
 func setTimezoneOffsetForPhotos() {
   # Check if enough arguments are passed
   if [[ $# -lt 2 ]]; then
