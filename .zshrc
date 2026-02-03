@@ -25,8 +25,10 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$PATH:$HOME/.local/bin"
 
 # Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+if [[ -d "$HOME/.pyenv" ]]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+fi
 
 # ------------------------------------------------------------
 # 3. TOOL INITIALIZATION
@@ -36,7 +38,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Pyenv
-eval "$(pyenv init --path)"
+command -v pyenv &>/dev/null && eval "$(pyenv init --path)"
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
