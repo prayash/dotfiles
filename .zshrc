@@ -388,4 +388,4 @@ function changeIcons() {
 # 9. EXTERNAL SOURCES
 # ------------------------------------------------------------
 
-[[ -f ~/dev/fruitco-toolbelt/fruitco-toolbelt.zshrc ]] && source ~/dev/fruitco-toolbelt/fruitco-toolbelt.zshrc
+_f=~/Developer/fruitco-toolbelt/fruitco-toolbelt.zshrc; [[ -f $_f ]] && . $_f
