@@ -1,47 +1,21 @@
-[user]
-	name = Prayash Thapa
-	email = prayasht@gmail.com
-
-[github]
-	user = prayasht
-
-[alias]
-  ch = checkout
-  ci = commit
-  st = status
-  br = branch
-  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-  type = cat-file -t
-  dump = cat-file -p
-  discard = reset --hard HEAD
-
-[color]
-	ui = true
+[include]
+	path = ~/Developer/dotfiles/.gitconfig.local
 
 [push]
 	default = simple
+	autoSetupRemote = true
 
-[format]
-  pretty = %Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset
-  graph = true
-
-[advice]
-  statusHints = false
-
-[log]
-  abbrevCommit = true
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[core]
-	excludesfile = /Users/effulgence/.gitignore_global
-[commit]
-	template = /Users/effulgence/.stCommitMsg
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[core]
+	editor = code --wait
+
+[pull]
+	rebase = true
+
+[branch]
+	autoSetupMerge = always
