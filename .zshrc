@@ -186,6 +186,7 @@ alias grbs='git rebase --skip'
 alias grhh='git reset --hard HEAD'
 alias grlb='git branch | grep -v "master" | xargs git branch -D'
 alias unwip='git reset --soft HEAD^'
+alias gfr='git fetch origin && git reset --hard origin/$(git branch --show-current)'
 
 # --- Node/NPM/Yarn/PNPM ---
 alias nu='nvm use'
